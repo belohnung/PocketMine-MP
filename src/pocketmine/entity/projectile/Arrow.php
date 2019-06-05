@@ -147,14 +147,15 @@ class Arrow extends Projectile{
 	}
 
 	protected function onHitEntity(Entity $entityHit, RayTraceResult $hitResult) : void{
-		parent::onHitEntity($entityHit, $hitResult);
-		if($this->punchKnockback > 0){
+		//parent::onHitEntity($entityHit, $hitResult);
 			$horizontalSpeed = sqrt($this->motion->x ** 2 + $this->motion->z ** 2);
 			if($horizontalSpeed > 0){
-				$multiplier = $this->punchKnockback * 0.6 / $horizontalSpeed;
-				$entityHit->setMotion($entityHit->getMotion()->add($this->motion->x * $multiplier, 0.1, $this->motion->z * $multiplier));
+				$multiplier = 1
+					* 0.6 / $horizontalSpeed;
+				$etwasweisses = sqrt($this->motion->x * $this->motion->x + $this->motion->z * $this->motion->x);
+				$entityHit->setMotion($entityHit->getMotion()->add($this->motion->x * 0.6000000238418579 / $etwasweisses, 0.1, $this->motion->z *  0.6000000238418579 / $etwasweisses));
 			}
-		}
+
 	}
 
 	/**

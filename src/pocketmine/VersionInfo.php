@@ -21,7 +21,7 @@
 
 namespace pocketmine;
 
-const NAME = "PocketMine-MP";
+const NAME = "PocketMine-MP(DUPEGAMES-v0.1)";
 const BASE_VERSION = "3.8.4";
 const IS_DEVELOPMENT_BUILD = true;
 const BUILD_NUMBER = 0;

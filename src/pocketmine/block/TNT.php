@@ -64,6 +64,24 @@ class TNT extends Solid{
 		return false;
 	}
 
+	public function onNearbyBlockChange() : void{
+		if($this->getSide(Vector3::SIDE_EAST)->getId() === self::REDSTONE_BLOCK){
+			$this->ignite();
+		}
+		if($this->getSide(Vector3::SIDE_UP)->getId() === self::REDSTONE_BLOCK){
+			$this->ignite();
+		}
+		if($this->getSide(Vector3::SIDE_WEST)->getId() === self::REDSTONE_BLOCK){
+			$this->ignite();
+		}
+		if($this->getSide(Vector3::SIDE_NORTH)->getId() === self::REDSTONE_BLOCK){
+			$this->ignite();
+		}
+		if($this->getSide(Vector3::SIDE_SOUTH)->getId() === self::REDSTONE_BLOCK){
+			$this->ignite();
+		}
+	}
+
 	public function hasEntityCollision() : bool{
 		return true;
 	}
@@ -77,7 +95,7 @@ class TNT extends Solid{
 	public function ignite(int $fuse = 80){
 		$this->getLevel()->setBlock($this, BlockFactory::get(Block::AIR), true);
 
-		$mot = (new Random())->nextSignedFloat() * M_PI * 2;
+		$mot = (new Random())->nextSignedFloat() * M_PI * 1.25;
 		$nbt = Entity::createBaseNBT($this->add(0.5, 0, 0.5), new Vector3(-sin($mot) * 0.02, 0.2, -cos($mot) * 0.02));
 		$nbt->setShort("Fuse", $fuse);
 
